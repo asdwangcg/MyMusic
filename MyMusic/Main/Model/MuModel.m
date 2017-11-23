@@ -30,22 +30,32 @@
 */
     
     NSArray *mp3Array = [NSBundle pathsForResourcesOfType:@"mp3" inDirectory:[[NSBundle mainBundle] resourcePath]];//本地歌曲
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:mp3Array];
+    [arr addObject:@"http://sc1.111ttt.com/2017/1/04/26/297262113196.mp3"];
+    NSArray *arr1 = [NSArray arrayWithArray:arr];
+    
     MuModel *model = [[MuModel alloc] init];
-    return [model Read:mp3Array];
+    return [model Read:arr1];
 }
 
 - (NSMutableDictionary *)Read:(NSArray *)MuArr {
     NSMutableArray *ResultArr = [NSMutableArray array];
     NSMutableDictionary *ResultDic = [NSMutableDictionary dictionary];
     for (int i = 0; i < [MuArr count]; i ++) {
-        NSString *filePath = [MuArr objectAtIndex:i];//随便取一个，说明
+        NSString *filePath = [MuArr objectAtIndex:i];
         //文件管理，取得文件属性
         //    NSFileManager *fm = [NSFileManager defaultManager];
         //    NSDictionary *dictAtt = [fm attributesOfItemAtPath:filePath error:nil];
         
         //取得音频数据
-        NSURL *fileURL=[NSURL fileURLWithPath:filePath];
-        AVURLAsset *mp3Asset=[AVURLAsset URLAssetWithURL:fileURL options:nil];
+        NSURL *fileURL;
+        if ([filePath hasPrefix:@"http"]) {
+            fileURL = [NSURL URLWithString:filePath];
+        }
+        else {
+            fileURL = [NSURL fileURLWithPath:filePath];
+        }
+        AVURLAsset *mp3Asset = [AVURLAsset URLAssetWithURL:fileURL options:nil];
         
         
         NSString *singer;//歌手

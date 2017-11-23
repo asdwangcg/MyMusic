@@ -13,4 +13,10 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <AFNetworking.h>
 #import <Masonry.h>
+#import <EAMiniAudioPlayerView.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <MMDrawerController.h>
+#import <UIViewController+MMDrawerController.h>
+#import <SDWebImage/UIView+WebCache.h>
+#import <SDWebImage/UIButton+WebCache.h>
 #endif /* Header_h */

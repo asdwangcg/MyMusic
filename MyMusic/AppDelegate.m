@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "LoginViewViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -21,23 +22,40 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     MainViewController *main = [[MainViewController alloc] init];
-    
+    LoginViewViewController *log = [[LoginViewViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:main];
     [nav.navigationBar setBarTintColor:BackGroundColor];
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     [nav.navigationBar setTranslucent:NO];
     
-    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    [self becomeFirstResponder];
+    MMDrawerController *drawer = [[MMDrawerController alloc] initWithCenterViewController:nav leftDrawerViewController:log];
+//    drawer.maximumLeftDrawerWidth = 200.0;
+//    drawer.maximumRightDrawerWidth = 200.0;
+    drawer.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+    drawer.closeDrawerGestureModeMask =MMCloseDrawerGestureModeAll;
     
-    [self.window setRootViewController:nav];
+    [self.window setRootViewController:drawer];
     [self.window makeKeyAndVisible];
     
     
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+    
+    [session setActive:YES error:nil];
+    
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return [TencentOAuth HandleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    return [TencentOAuth HandleOpenURL:url];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -48,6 +66,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
 }
 
 

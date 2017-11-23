@@ -14,16 +14,38 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - EAMiniAudioPlayerView (0.0.4)
   - Masonry (1.1.0)
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.6.0):
+    - MMDrawerController/Core
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - EAMiniAudioPlayerView
   - Masonry
+  - MMDrawerController (~> 0.6.0)
+  - SDWebImage (~> 4.1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  EAMiniAudioPlayerView: 4178a65699f5d1ffbee8ec2cf3ebaf4664dfa853
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
 
-PODFILE CHECKSUM: 5415e02a1230b03f2b9f698f809c406a0fa45ba2
+PODFILE CHECKSUM: de845625b662b5d460cf4ea9bbbb53d30c4f8ed1
 
 COCOAPODS: 1.3.1

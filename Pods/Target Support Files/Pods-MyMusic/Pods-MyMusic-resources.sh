@@ -83,6 +83,22 @@ EOM
       ;;
   esac
 }
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/btn_play@2x.png"
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/btn_play@3x.png"
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/btn_stop@2x.png"
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/btn_stop@3x.png"
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/icon_audio@2x.png"
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/icon_audio@3x.png"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/btn_play@2x.png"
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/btn_play@3x.png"
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/btn_stop@2x.png"
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/btn_stop@3x.png"
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/icon_audio@2x.png"
+  install_resource "${PODS_ROOT}/EAMiniAudioPlayerView/EAMiniAudioPlayerView/Resources/icon_audio@3x.png"
+fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
